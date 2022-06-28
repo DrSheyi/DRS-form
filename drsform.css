@@ -1,66 +1,98 @@
-body{
+body {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-#form-holder{
-    font-family: 'Lato',sans-serif;
+
+
+
+#form-holder {
+    font-family: 'Lato', sans-serif;
     color: #344055;
     background-color: #fbfafb;
     padding: 20px;
     border: 15px solid #344055;
-    width: 1200px; 
+    width: 1200px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     visibility: visible;
+
 }
-form{
-    font-family: 'Lato',sans-serif;
+
+
+
+form {
+    font-family: 'Lato', sans-serif;
     font-size: 125%;
     margin: auto;
-    width: 95%; 
+    width: 95%;
 }
-input{
+
+
+
+
+.input-control.success input {
+    border-color: #09c372;
+}
+
+.input-control.error input {
+    border-color: #ff3860;
+
+}
+
+.input-control .error {
+    color: #ff3860;
+    font-size: 13px;
+
+}
+
+input {
     left: 85px;
     color: black;
-    
+
 }
-input[type=checkbox]{
-  
+
+input[type=checkbox] {
+
     left: -15px;
-    
+
 }
-select{
-    
+
+select {
+
     left: 85px;
     color: black;
     background-color: #fbfafb;
 }
-label[for=consent]{
+
+label[for=consent] {
     left: 100px;
     font-size: 96%;
     text-align: left;
 }
-label[for=fiveYearInjury]{
+
+label[for=fiveYearInjury] {
     font-size: 96%;
 }
-label{
+
+label {
     float: left;
     text-align: justify;
-}  
-button{
+}
+
+button {
     color: black;
 }
- 
-#results{
+
+#results {
     font-family: 'Lato', sans-serif;
     color: #344055;
     border-radius: 15px;
     padding: 20px;
-   position: absolute;
+    position: absolute;
     width: 1200px;
     border: 25px solid #344055;
     visibility: hidden;
@@ -69,46 +101,78 @@ button{
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    top:5%;
-    
+    top: 5%;
+
 }
-#results img{
+
+#results img {
     width: 95%;
 }
-#resultsTable{
+
+#resultsTable {
     border-collapse: collapse;
     background-color: #aaa;
-}     
-#resultsTable, th, td {
+}
+
+#resultsTable,
+th,
+td {
     color: #344055;
     padding: 10px;
     border: 1px solid #000 !important;
-} 
+}
+
 /*added this for printing */
-@media print
+@media print {
 
- {
+    @page {
+        margin: 0;
+    }
 
-    @page  { margin: 0; }
-    body { margin: 1.6cm; }
+    body {
+        margin: 1.6cm;
+    }
 
-  #resultsTable { page-break-inside:auto
-                  page-break-after:always
-                }
-  th, td {
-    color: #344055;
-    padding: 10px;
-    border: 1px solid #000;}
-  tr { page-break-inside:avoid; page-break-after:auto }
-  td { page-break-inside:avoid; page-break-after:auto }
-  div   { page-break-inside:avoid; } /* This is the key */
-  thead { display:table-header-group;}
-  tfoot { display:table-footer-group }
+    /*
+    #resultsTable {
+        page-break-inside: auto page-break-after:always
+    }
+*/
+    th,
+    td {
+        color: #344055;
+        padding: 10px;
+        border: 1px solid #000;
+    }
+
+    tr {
+        page-break-inside: avoid;
+        page-break-after: auto
+    }
+
+    td {
+        page-break-inside: avoid;
+        page-break-after: auto
+    }
+
+    div {
+        page-break-inside: avoid;
+    }
+
+    /* This is the key */
+    thead {
+        display: table-header-group;
+    }
+
+    tfoot {
+        display: table-footer-group
+    }
 
 }
+
 /*Ends Here */
-button{
-    
+button {
+
     background: #123288;
     width: 155px;
     height: 40px;
@@ -116,5 +180,5 @@ button{
     font-size: medium;
     border-radius: 15px;
     border: none;
-    
+
 }

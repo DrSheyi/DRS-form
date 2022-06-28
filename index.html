@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lato&amp;display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<script src="drsjs.js"></script>-->
     <script src="drsjs.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.5/pdfmake.js"
         integrity="sha512-iKv9YWIwhexI0fRGos8mMuFFHhUCbpHTHFPrdByZc6C3QqMRuFN+3fdIbq6EDClHh+hYSAOf10T9VrBDPF92jA=="
@@ -28,15 +29,32 @@
             <label for="TestAdmin">Test Administrator (If Applicable)</label><br>
             <input type="text" id="testadministrator" name="TestAdmin"><br><br>
 
-            <label for="TestDate">Test Date</label><br>
-            <input type="date" id="testingdate" name="TestDate"><br><br>
+            <div class="input-control">
+                <label for="TestDate">Test Date</label><br>
+                <div class="error"></div>
+                <input type="date" id="testingdate" name="TestDate"><br><br>
+            </div>
 
-            <label for="email">Please enter your email address</label><br>
-            <input type="email" id="email" name="email" onchange="validateEmail()"><br><br>
-            <label for="FName">Please enter your first name</label><br>
-            <input type="text" id="firstName" name="FName" onchange="validateFirstName()"><br><br>
-            <label for="LName">Please enter your last name</label><br>
-            <input type="text" id="lastName" name="LName" onchange="validateLastName()"><br><br>
+            <div class="input-control">
+                <label for="email">Please enter your email address</label><br>
+                <div class="error"></div>
+                <input type="text" id="email" name="email"><br><br>
+            </div>
+
+            <div class="input-control">
+                <label for="FName">Please enter your first name</label><br>
+                <div class=" error"></div>
+                <input type="text" id="firstName" name="FName" "><br><br>  
+            </div>
+    
+
+
+            <div class=" input-control">
+                <label for="LName">Please enter your last name</label><br>
+                <div class="error"></div>
+                <input type="text" id="lastName" name="LName"><br><br>
+            </div>
+
             <label for="ethnicity"> Please select your ethnicity </label><br>
             <select name="ethnicity" id="ethnicity" onchange="ethnicityOther()">
                 <option value="White"> White </option>
@@ -53,91 +71,177 @@
                 <option value="Male"> Male </option>
                 <option value="Female"> Female </option>
             </select><br><br>
-            <label for="company"> Please enter your Organization / Company / Affiliation</label><br>
-            <input type="text" id="company" name="company"><br><br>
-            <label for="RSingleLegReleves"> Enter Right Single Leg Releves</label><br>
-            <input type="number" id="rightSingleLegReleves" name="RsingleLegReleves"
-                onchange="validatetRightSingleLegReleves()" min="0"><br><br>
-            <label for="LSingleLegReleves"> Enter Left Single Leg Releves</label><br>
-            <input type="number" id="leftSingleLegReleves" name="LsingleLegReleves"
-                onchange="validateLeftSingleLegReleves()" min="0"><br><br>
-            <label for="plank"> Enter plank time (s)</label><br>
-            <input type="number" id="plank" name="plank" min="0" onchange="validatePlank()"><br><br>
-            <label for="RSidePlank"> Enter Right Side Plank with Abduction (s)</label><br>
-            <input type="number" id="rightSidePlank" name="RSidePlank" min="0"
-                onchange="validateRightSidePlank()"><br><br>
-            <label for="LSidePlank"> Enter Left Side Plank with Abduction (s)</label><br>
-            <input type="number" id="leftSidePlank" name="LSidePlank" min="0"
-                onchange="validateLeftSidePlank()"><br><br>
-            <label for="RSingleLegBridges"> Enter Right Single Leg Bridges </label><br>
-            <input type="number" id="rightSingleLegBridges" name="RSingleLegBridges" min="0"
-                onchange="validateRightSingleLegBridges()"><br><br>
-            <label for="LSingleLegBridges"> Enter Left Single Leg Bridges </label><br>
-            <input type="number" id="leftSingleLegBridges" name="LSingleLegBridges" min="0"
-                onchange="validateLeftSingleLegBridges()"><br><br>
-            <label for="RHopTest1"> Enter Right Side Hop Test Trial 1 (cm)</label><br>
-            <input type="number" id="rightHopTest1" name="RHopTest1" min="0" onchange="validateRightHopTest1()"><br><br>
-            <label for="LHopTest1"> Enter Left Side Hop Test Trial 1 (cm)</label><br>
-            <input type="number" id="leftHopTest1" name="LHopTest1" min="0" onchange="validateLeftHopTest1()"><br><br>
-            <label for="RHopTest2"> Enter Right Side Hop Test Trial 2 (cm)</label><br>
-            <input type="number" id="rightHopTest2" name="RHopTest2" min="0" onchange="validateRightHopTest2()"><br><br>
-            <label for="LHopTest2"> Enter Left Side Hop Test Trial 2 (cm)</label><br>
-            <input type="number" id="leftHopTest2" name="LHopTest2" min="0" onchange="validateLeftHopTest2()"><br><br>
-            <label for="RPasseReleveBalance"> Enter Right Passe Releve Balance time (s)</label><br>
-            <input type="number" id="rightPasseReleveBalance" name="RPasseReleveBalance" min="0"
-                onchange="validateRightPasseReleveBalance()"><br><br>
-            <label for="LPasseReleveBalance"> Enter Left Passe Relevé Balance time (s)</label><br>
-            <input type="number" id="leftPasseReleveBalance" name="LPasseReleveBalance" min="0"
-                onchange="validateLeftPasseReleveBalance()"><br><br>
-            <label for="RPasseFlatFootBalance"> Enter Right Passe Flat Foot Balance time with eyes closed
-                (s)</label><br>
-            <input type="number" id="rightPasseFlatFootBalance" name="RPasseFlatFootBalance" min="0"
-                onchange="validateRightPasseFlatFootBalance()"><br><br>
-            <label for="LPasseFlatFootBalance"> Enter Left Passe Flat Foot Balance time with eyes closed (s)</label><br>
-            <input type="number" id="leftPasseFlatFootBalance" name="LPasseFlatFootBalance" min="0"
-                onchange="validateLeftPasseFlatFootBalance()"><br><br>
-            <label for="ckcuest">Enter CKCUEST</label><br>
-            <input type="number" id="ckcuest" min="0" onchange="validateCkcuest()"><br><br>
-            <label for="bolt"> Enter your BOLT test score </label><br>
-            <input type="number" id="bolt" name="bolt" min="0" onchange="validateBolt()"><br><br>
-            <label for="workingLeg">Please select your preferred "working" leg</label><br>
 
-            <select name="workingLeg" id="workingLeg">
-                <option value="right"> Right </option>
-                <option value="left"> Left </option>
-                <option value="Both"> Both </option>
-            </select><br><br>
-            <label for="standingLeg">Please select your preferred "standing" leg</label><br>
-            <select name="standingLeg" id="standingLeg">
-                <option value="right"> Right </option>
-                <option value="left"> Left </option>
-                <option value="Both"> Both </option>
-            </select><br><br>
-            <label for="threeMonthInjury">Within the last 3 months have you ever had an injury to your hip, knee, foot
-                or ankle,<br> that caused you to stop dancing for more than 1 week? If so, which side?</label><br><br>
-            <select name="threeMonthInjury" id="threeMonthInjury">
-                <option value="N/A"> N/A </option>
-                <option value="right"> Right </option>
-                <option value="left"> Left </option>
-                <option value="Both"> Both </option>
-            </select><br><br>
-            <label for="fiveYearInjury">Within the last 5 years have you had an injury to your hip, knee, foot or ankle
-                that caused <br>you to stop dancing for more than 1 week (do not include injuries within the last 3
-                months)? If so, which side? </label><br><br>
-            <select name="fiveYearInjury" id="fiveYearInjury">
-                <option value="N/A"> N/A </option>
-                <option value="right"> Right </option>
-                <option value="left"> Left </option>
-                <option value="Both"> Both </option>
-            </select><br><br>
-            <label for="consent"><input type="checkbox" id="consent" name="consent">Please check the box if you consent
-                to your data being used anonymously for research and teaching purposes</label><br><br>
-            <a href="javascript:alert('learn more');">Learn More</a><br>
-            <br>
-            <!--<button type="button" onclick="pdfMake.createPdf(create_pdf()).print();">Submit</button> -->
-            <button type="button" onclick="validateForm()">Submit</button>
-        </form>
+            <div class="input-control">
+                <label for="company"> Please enter your Organization / Company / Affiliation</label><br>
+                <div class=" error"></div>
+                <input type="text" id="company" name="company"><br><br>
+            </div>
+
+            <div class="input-control">
+                <label for="RSingleLegReleves"> Enter Right Single Leg Releves</label><br>
+                <input type="number" id="rightSingleLegReleves" name="RsingleLegReleves" min="0"><br><br>
+                <div class=" error"></div>
+            </div>
+
+            <div class="input-control">
+                <label for="LSingleLegReleves"> Enter Left Single Leg Releves</label><br>
+                <div class=" error"></div>
+                <input type="number" id="leftSingleLegReleves" name="LsingleLegReleves" min="0"><br><br>
+            </div>
+
+            <div class="input-control">
+                <label for="plank"> Enter plank time (s)</label><br>
+                <div class=" error"></div>
+                <input type="number" id="plank" name="plank" min="0"><br><br>
+            </div>
+
+            <div class="input-control">
+                <label for="RSidePlank"> Enter Right Side Plank with Abduction (s)</label><br>
+                <div class=" error"></div>
+                <input type="number" id="rightSidePlank" name="RSidePlank" min="0"><br><br>
+            </div>
+
+            <div class="input-control">
+                <label for="LSidePlank"> Enter Left Side Plank with Abduction (s)</label><br>
+                <div class=" error"></div>
+                <input type="number" id="leftSidePlank" name="LSidePlank" min="0""><br><br>
+            </div>
+    
+
+            <div class=" input-control">
+                <label for=" RSingleLegBridges"> Enter Right Single Leg Bridges </label><br>
+                <div class=" error"></div>
+                <input type="number" id="rightSingleLegBridges" name="RSingleLegBridges" min="0"><br><br>
+            </div>
+
+            <div class="input-control">
+                <label for="LSingleLegBridges"> Enter Left Single Leg Bridges </label><br>
+                <div class=" error"></div>
+                <input type="number" id="leftSingleLegBridges" name="LSingleLegBridges" min="0" "><br><br>    
+            </div>
+    
+
+            <div class=" input-control">
+                <label for=" RHopTest1"> Enter Right Side Hop Test Trial 1 (cm)</label><br>
+                <div class=" error"></div>
+                <input type="number" id="rightHopTest1" name="RHopTest1" min="0"><br><br>
+            </div>
+
+            <div class="input-control">
+                <label for="LHopTest1"> Enter Left Side Hop Test Trial 1 (cm)</label><br>
+                <div class=" error"></div>
+                <input type="number" id="leftHopTest1" name="LHopTest1" min="0"><br><br>
+            </div>
+
+            <div class="input-control">
+                <label for="RHopTest2"> Enter Right Side Hop Test Trial 2 (cm)</label><br>
+                <div class=" error"></div>
+                <input type="number" id="rightHopTest2" name="RHopTest2" min="0"><br><br>
+            </div>
+
+            <div class="input-control">
+                <label for="LHopTest2"> Enter Left Side Hop Test Trial 2 (cm)</label><br>
+                <div class=" error"></div>
+                <input type="number" id="leftHopTest2" name="LHopTest2" min="0"><br><br>
+            </div>
+
+
+            <div class="input-control">
+                <label for="RPasseReleveBalance"> Enter Right Passe Releve Balance time (s)</label><br>
+                <div class=" error"></div>
+                <input type="number" id="rightPasseReleveBalance" name="RPasseReleveBalance" min="0"><br><br>
+            </div>
+
+            <div class="input-control">
+                <label for="LPasseReleveBalance"> Enter Left Passe Relevé Balance time (s)</label><br>
+                <div class=" error"></div>
+                <input type="number" id="leftPasseReleveBalance" name="LPasseReleveBalance" min="0"><br><br>
+            </div>
+
+            <div class="input-control">
+                <label for="RPasseFlatFootBalance"> Enter Right Passe Flat Foot Balance time with eyes closed
+                    (s)</label><br>
+                <div class=" error"></div>
+                <input type="number" id="rightPasseFlatFootBalance" name="RPasseFlatFootBalance" min="0"><br><br>
+            </div>
+
+            <div class="input-control">
+                <label for="LPasseFlatFootBalance"> Enter Left Passe Flat Foot Balance time with eyes closed
+                    (s)</label><br>
+                <input type="number" id="leftPasseFlatFootBalance" name="LPasseFlatFootBalance" min="0"><br><br>
+                <div class=" error"></div>
+            </div>
+
+            <div class="input-control">
+                <label for="ckcuest">Enter CKCUEST</label><br>
+                <input type="number" id="ckcuest" min="0""><br><br>
+                <div class=" error">
+            </div>
     </div>
+
+
+    <div class="input-control">
+        <label for=" bolt"> Enter your BOLT test score </label><br>
+        <input type="number" id="bolt" name="bolt" min="0""><br><br>
+        <div class=" error">
+    </div>
+    </div>
+
+    <label for=" workingLeg">Please select your preferred "working" leg</label><br>
+
+    <select name="workingLeg" id="workingLeg">
+        <option value="right"> Right </option>
+        <option value="left"> Left </option>
+        <option value="Both"> Both </option>
+    </select><br><br>
+    <label for="standingLeg">Please select your preferred "standing" leg</label><br>
+    <select name="standingLeg" id="standingLeg">
+        <option value="right"> Right </option>
+        <option value="left"> Left </option>
+        <option value="Both"> Both </option>
+    </select><br><br>
+    <label for="threeMonthInjury">Within the last 3 months have you ever had an injury to your hip, knee,
+        foot
+        or ankle,<br> that caused you to stop dancing for more than 1 week? If so, which
+        side?</label><br><br>
+    <select name="threeMonthInjury" id="threeMonthInjury">
+        <option value="N/A"> N/A </option>
+        <option value="right"> Right </option>
+        <option value="left"> Left </option>
+        <option value="Both"> Both </option>
+    </select><br><br>
+    <label for="fiveYearInjury">Within the last 5 years have you had an injury to your hip, knee, foot or
+        ankle
+        that caused <br>you to stop dancing for more than 1 week (do not include injuries within the last 3
+        months)? If so, which side? </label><br><br>
+    <select name="fiveYearInjury" id="fiveYearInjury">
+        <option value="N/A"> N/A </option>
+        <option value="right"> Right </option>
+        <option value="left"> Left </option>
+        <option value="Both"> Both </option>
+    </select><br><br>
+    <label for="consent"><input type="checkbox" id="consent" name="consent">Please check the box if you
+        consent
+        to your data being used anonymously for research and teaching purposes</label><br><br>
+
+
+    <!--If the learn more button click the pop-up window will open with the prompt.
+            If the user clicked ok it wiill open dance ready website in the new tab-->
+    <script type="text/javascript">function disp_alert() {
+            if (confirm("The Dance Ready Project is dedicated to furthering the Health and Wellness of Dancers via education, tools and research. Please check the box if you consent to your data being used anonymously for research and teaching purposes. Please click OK for more info on us."))
+                window.open('https://www.danceready.org/', '_blank');
+        }
+    </script>
+
+    <input type="button" onclick="disp_alert()" value="Learn More" />
+    <br>
+    <br>
+    <!---<button type="button" onclick="pdfMake.createPdf(create_pdf()).print();">Submit</button>-->
+    <button type="button" onclick="validateForm()">Submit</button>
+    </form>
+    </div>
+
 </body>
 
 </html>

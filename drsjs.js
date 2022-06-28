@@ -235,12 +235,31 @@ function get_bolts_vals(amount) {
     * 
     * @returns        {Boolean} True if valid email else false
     */
+
+const setError = (element, message) => {
+
+    const inputControl = element.parentElement;
+    const errorDisplay = inputControl.querySelector('.error');
+
+    errorDisplay.innerText = message;
+    inputControl.classList.add('error');
+    inputControl.classList.remove('success');
+
+}
+
+const setSuccess = element => {
+    const inputControl = element.parentElement;
+    const errorDisplay = inputControl.querySelector('.error');
+
+    errorDisplay.innerText = '';
+    inputControl.classList.add('success');
+    inputControl.classList.remove('error');
+}
+
 function validateEmail() {
-    if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(DRSForm.email.value)) {
-        return (true);
-    }
-    alert("You have entered an invalid email address!");
-    return (false);
+
+    return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(DRSForm.email.value);
+
 }
 /**
  * Checks the entered name only contains alphabetical characters. Prints an alert if not allowed character is entered.
@@ -248,11 +267,7 @@ function validateEmail() {
  * @returns        {Boolean} True if only alphabetical characters else false
  */
 function validateFirstName() {
-    if (/^[A-Za-z\s]+$/.test(DRSForm.firstName.value)) {
-        return (true);
-    }
-    alert("Invalid Character, Please enter only letters!");
-    return (false);
+    return /^[A-Za-z\s]+$/.test(DRSForm.firstName.value);
 }
 /**
  * Checks the entered name only contains alphabetical characters. Prints an alert if not allowed character is entered.
@@ -260,12 +275,8 @@ function validateFirstName() {
  * @returns        {Boolean} True if only alphabetical characters else false
  */
 function validateLastName() {
-    if (/^[A-Za-z\s]+$/.test(DRSForm.lastName.value)) {
-        return (true);
-    }
+    return /^[A-Za-z\s]+$/.test(DRSForm.lastName.value);
 
-    alert("Invalid Character, Please enter only letters!");
-    return (false);
 }
 /**  
  * Functions from validatetRightSingleLegReleves() to validateBolt() checks weather the input value is correct. 
@@ -274,354 +285,525 @@ function validateLastName() {
 
 function validatetRightSingleLegReleves() {
     var rightSingleLegReleves = DRSForm.rightSingleLegReleves.value;
-    if (rightSingleLegReleves >= 0) {
-        return (true);
-    }
+    return rightSingleLegReleves >= 0
 
-    alert("Invalid number, Right Single Leg Releves must be positive number!");
-    return (false);
+
 }
 
 function validateLeftSingleLegReleves() {
     var leftSingleLegReleves = DRSForm.leftSingleLegReleves.value;
-    if (leftSingleLegReleves >= 0) {
-        return (true);
-    }
+    return leftSingleLegReleves >= 0
 
-    alert("Invalid number, Left Single Leg Releves must be positive number!");
-    return (false);
+
 }
 
 function validatePlank() {
     var plank = DRSForm.plank.value;
-    if (plank >= 0) {
-        return (true);
-    }
+    return plank >= 0
 
-    alert("Invalid number, Plank time must be positive number!");
-    return (false);
 }
 
 function validateRightSidePlank() {
     var rightSidePlank = DRSForm.rightSidePlank.value;
-    if (rightSidePlank >= 0) {
-        return (true);
-    }
+    return rightSidePlank >= 0;
 
-    alert("Invalid number, Right Side Plank with Abduction(s) must be positive number!");
-    return (false);
 }
 
 function validateLeftSidePlank() {
     var leftSidePlank = DRSForm.leftSidePlank.value;
-    if (leftSidePlank >= 0) {
-        return (true);
-    }
+    return leftSidePlank >= 0;
 
-    alert("Invalid number, Left Side Plank with Abduction(s) must be positive number!");
-    return (false);
 }
 
 function validateRightSingleLegBridges() {
     var rightSingleLegBridges = DRSForm.rightSingleLegBridges.value;
-    if (rightSingleLegBridges >= 0) {
-        return (true);
-    }
+    return rightSingleLegBridges >= 0;
 
-    alert("Invalid number, Right Single Leg Bridges must be positive number!");
-    return (false);
 }
 
 function validateLeftSingleLegBridges() {
     var leftSingleLegBridges = DRSForm.leftSingleLegBridges.value;
-    if (leftSingleLegBridges >= 0) {
-        return (true);
-    }
+    return leftSingleLegBridges >= 0;
 
-    alert("Invalid number, Left Single Leg Bridges must be positive positive!");
-    return (false);
 }
 
 function validateRightHopTest1() {
     var rightHopTest1 = DRSForm.rightHopTest1.value;
-    if (rightHopTest1 >= 0) {
-        return (true);
-    }
+    return rightHopTest1 >= 0;
 
-    alert("Invalid number, Right Side Hop Test1(cm) must be positive number!");
-    return (false);
 }
 
 function validateLeftHopTest1() {
     var leftHopTest1 = DRSForm.leftHopTest1.value;
-    if (leftHopTest1 >= 0) {
-        return (true);
-    }
+    return leftHopTest1 >= 0;
 
-    alert("Invalid number, Left Side Hop Test1(cm) must be positive number!");
-    return (false);
 }
 
 function validateRightHopTest2() {
     var rightHopTest2 = DRSForm.rightHopTest2.value;
-    if (rightHopTest2 >= 0) {
-        return (true);
-    }
+    return rightHopTest2 >= 0;
 
-    alert("Invalid number, Right Hop Test2(cm) must be positive number!");
-    return (false);
 }
 
 function validateLeftHopTest2() {
     var leftHopTest2 = DRSForm.leftHopTest2.value;
-    if (leftHopTest2 >= 0) {
-        return (true);
-    }
-
-    alert("Invalid number, Left Hop Test2(cm) must be positive!");
-    return (false);
+    return leftHopTest2 >= 0;
 }
 
 function validateRightPasseReleveBalance() {
     var rightPasseReleveBalance = DRSForm.rightPasseReleveBalance.value;
-    if (rightPasseReleveBalance >= 0) {
-        return (true);
-    }
+    return rightPasseReleveBalance >= 0;
 
-    alert("Invalid number, Right Passe Releve Balance time(s) must be positive number!");
-    return (false);
 }
 
 function validateLeftPasseReleveBalance() {
     var leftPasseReleveBalance = DRSForm.leftPasseReleveBalance.value;
-    if (leftPasseReleveBalance >= 0) {
-        return (true);
-    }
+    return leftPasseReleveBalance >= 0;
 
-    alert("Invalid number, Left Passe Releve Balance time(s) must be positive number!");
-    return (false);
 }
 
 function validateRightPasseFlatFootBalance() {
     var rightPasseFlatFootBalance = DRSForm.rightPasseFlatFootBalance.value;
-    if (rightPasseFlatFootBalance >= 0) {
-        return (true);
-    }
+    return rightPasseFlatFootBalance >= 0;
 
-    alert("Invalid number, Right Passe Flat Foot Balance time(s) must be positive number!");
-    return (false);
 }
 
 function validateLeftPasseFlatFootBalance() {
     var leftPasseFlatFootBalance = DRSForm.leftPasseFlatFootBalance.value;
-    if (leftPasseFlatFootBalance >= 0) {
-        return (true);
-    }
+    return leftPasseFlatFootBalance >= 0;
 
-    alert("Invalid number, Left Passe Flat Foot Balance time(s) must be positive number!");
-    return (false);
 }
 
 function validateCkcuest() {
     var ckcuest = DRSForm.ckcuest.value;
-    if (ckcuest >= 0) {
-        return (true);
-    }
+    return ckcuest >= 0;
 
-    alert("Invalid number, CKCUEST must be positive number!");
-    return (false);
 }
 
 function validateBolt() {
     var bolt = DRSForm.bolt.value;
-    if (bolt >= 0) {
-        return (true);
-    }
+    return bolt >= 0;
 
-    alert("Invalid number, BOLT test score must be positive number!");
-    return (false);
 }
 
 /**
  * This function checks weather input value is correct for all input fields. 
  * If the all input filds are true, it will create pdf, otherwise it will alert the user. 
- */
+ 
+*/
 function validateForm() {
 
     var dateInput = document.getElementById("testingdate");
-    console.log(dateInput.toString());
-    if (!dateInput.value) {
-        alert("Date must be filled out");
+    //console.log(dateInput.toString());
+    if (dateInput.value === "") {
+        setError(dateInput, 'Date is required');
+        //alert("Date must be filled out");
         return false;
-    };
+    } else {
+        setSuccess(dateInput);
+    }
 
-    if (!validateEmail()) { return false; }
-    var email = document.getElementById("email").value;
-    if (email === "") {
-        alert("Email must be filled out");
+
+    var emailValue = document.getElementById("email").value.trim();
+    var email = document.getElementById("email");
+    if (emailValue === "") {
+        // alert("Email must be filled out");
+
+        setError(email, 'Email is required');
         return false;
-    };
-    var firstName = document.getElementById("firstName").value;
+    } else if (!validateEmail()) {
+        setError(email, 'Not a valid email');
+        return false;
+    } else {
+        setSuccess(email);
+    }
+
+    var firstName = document.getElementById("firstName").value.trim();
+    var fName = document.getElementById("firstName");
     if (firstName === "") {
-        alert("First name must be filled out");
+        // alert("Email must be filled out");
+        // return false;
+        setError(fName, 'First name is required');
         return false;
-    };
-    if (!validateFirstName()) {
+    } else if (!validateFirstName()) {
+        setError(fName, 'Not a valid first name');
         return false;
-    }
-    var lastName = document.getElementById("lastName").value;
-    if (lastName === "") {
-        alert("Last name must be filled out");
-        return false;
-    };
-    if (!validateLastName()) {
-        return false;
-    }
-    var company = document.getElementById("company").value;
-    if (company === "") {
-        alert("Company must be filled out");
-        return false;
-    };
-    if (!validatetRightSingleLegReleves()) {
-        return false;
-    }
-    var rightSingleLegReleves = document.getElementById("rightSingleLegReleves").value;
-    if (rightSingleLegReleves === "") {
-        alert("Right single leg releves must be filled out");
-        return false;
-    };
-    var leftSingleLegReleves = document.getElementById("leftSingleLegReleves").value;
-    if (leftSingleLegReleves === "") {
-        alert("Left single leg releves must be filled out");
-        return false;
-    };
-    if (!validateLeftSingleLegReleves()) {
-        return false;
-    }
-    var plank = document.getElementById("plank").value;
-    if (plank === "") {
-        alert("Plank must be filled out");
-        return false;
-    };
-    if (!validatePlank()) {
-        return false;
-    }
-    var rightSidePlank = document.getElementById("rightSidePlank").value;
-    if (rightSidePlank === "") {
-        alert("Right side plank must be filled out");
-        return false;
-    };
-    if (!validateRightSidePlank()) {
-        return false;
-    }
-    var leftSidePlank = document.getElementById("leftSidePlank").value;
-    if (leftSidePlank === "") {
-        alert("Left side plank must be filled out");
-        return false;
-    };
-    if (!validateLeftSidePlank()) {
-        return false;
-    }
-    var rightSingleLegBridges = document.getElementById("rightSingleLegBridges").value;
-    if (rightSingleLegBridges === "") {
-        alert("Right single leg bridges must be filled out");
-        return false;
-    };
-    if (!validateRightSingleLegBridges()) {
-        return false;
-    }
-    var leftSingleLegBridges = document.getElementById("leftSingleLegBridges").value;
-    if (leftSingleLegBridges === "") {
-        alert("Left single leg bridges must be filled out");
-        return false;
-    };
-    if (!validateLeftSingleLegBridges()) {
-        return false;
-    }
-    var rightHopTest1 = document.getElementById("rightHopTest1").value;
-    if (rightHopTest1 === "") {
-        alert("Right hop test 1 must be filled out");
-        return false;
-    };
-    if (!validateRightHopTest1()) {
-        return false;
-    }
-    var leftHopTest1 = document.getElementById("leftHopTest1").value;
-    if (leftHopTest1 === "") {
-        alert("Left hop test 1 must be filled out");
-        return false;
-    };
-    if (!validateLeftHopTest1()) {
-        return false;
-    }
-    var rightHopTest2 = document.getElementById("rightHopTest2").value;
-    if (rightHopTest2 === "") {
-        alert("Right hop test 2 must be filled out");
-        return false;
-    };
-    if (!validateRightHopTest2()) {
-        return false;
-    }
-    var leftHopTest2 = document.getElementById("leftHopTest2").value;
-    if (leftHopTest2 === "") {
-        alert("Left hop test 2 must be filled out");
-        return false;
-    };
-    if (!validateLeftHopTest2()) {
-        return false;
-    }
-    var rightPasseReleveBalance = document.getElementById("rightPasseReleveBalance").value;
-    if (rightPasseReleveBalance === "") {
-        alert("Right passe releve balance must be filled out");
-        return false;
-    };
-    if (!validateRightPasseReleveBalance()) {
-        return false;
-    }
-    var leftPasseReleveBalance = document.getElementById("leftPasseReleveBalance").value;
-    if (leftPasseReleveBalance === "") {
-        alert("Left passe releve balance must be filled out");
-        return false;
-    };
-    if (!validateLeftPasseReleveBalance()) {
-        return false;
-    }
-    var rightPasseFlatFootBalance = document.getElementById("rightPasseFlatFootBalance").value;
-    if (rightPasseFlatFootBalance === "") {
-        alert("Right passe flat foot balance must be filled out");
-        return false;
-    };
-    if (!validateRightPasseFlatFootBalance()) {
-        return false;
-    }
-    var leftPasseFlatFootBalance = document.getElementById("leftPasseFlatFootBalance").value;
-    if (leftPasseFlatFootBalance === "") {
-        alert("Left passe flat foot balance must be filled out");
-        return false;
-    };
-    if (!validateLeftPasseFlatFootBalance()) {
-        return false;
-    }
-    var ckcuest = document.getElementById("ckcuest").value;
-    if (ckcuest == "") {
-        alert("CKCUEST must be filled out");
-        return false;
-    };
-    if (!validateCkcuest) {
-        return false;
-    }
-    var bolt = document.getElementById("bolt").value;
-    if (bolt === "") {
-        alert("Bolt score must be filled out");
-        return false;
-    };
-    if (!validateBolt()) {
-        return false;
+    } else {
+        setSuccess(fName);
     }
 
+    var lastName = document.getElementById("lastName").value.trim();
+    var lName = document.getElementById("lastName");
+    if (lastName === "") {
+        // alert("Email must be filled out");
+        // return false;
+        setError(lName, 'Last name is required');
+        return false;
+    } else if (!validateLastName()) {
+        setError(lName, 'Not a valid last name');
+        return false;
+    } else {
+        setSuccess(lName);
+    }
+
+    var company = document.getElementById("company").value.trim();
+    var companyVal = document.getElementById("company");
+    if (company === "") {
+        // alert("Email must be filled out");
+        // return false;
+        setError(companyVal, 'Company is required');
+        return false;
+    } else {
+        setSuccess(companyVal);
+    }
+
+    var rightSingleLegReleves = document.getElementById("rightSingleLegReleves").value.trim();
+    var rightSingleLegRelevesVal = document.getElementById("rightSingleLegReleves");
+    if (rightSingleLegReleves === "") {
+        // alert("Email must be filled out");
+        // return false;
+        setError(rightSingleLegRelevesVal, 'Right single leg releves is required');
+        return false;
+    } else if (!validatetRightSingleLegReleves()) {
+        setError(rightSingleLegRelevesVal, 'Invalid number, Right Single Leg Releves must be positive number!');
+        return false;
+    } else {
+        setSuccess(rightSingleLegRelevesVal);
+    }
+
+
+    var leftSingleLegReleves = document.getElementById("leftSingleLegReleves").value.trim();
+    var leftSingleLegRelevesVal = document.getElementById("leftSingleLegReleves");
+    if (leftSingleLegReleves === "") {
+        // alert("Email must be filled out");
+        // return false;
+        setError(leftSingleLegRelevesVal, 'Left single leg releves is required');
+        return false;
+    } else if (!validatetRightSingleLegReleves()) {
+        setError(leftSingleLegRelevesVal, 'Invalid number, Left Single Leg Releves must be positive number!');
+        return false;
+    } else {
+        setSuccess(leftSingleLegRelevesVal);
+    }
+
+
+
+    var plank = document.getElementById("plank").value.trim();
+    var plankVal = document.getElementById("plank");
+    if (plank === "") {
+        // alert("Email must be filled out");
+        // return false;
+        setError(plankVal, 'Plank is required');
+        return false;
+    } else if (!validatePlank()) {
+        setError(plankVal, 'Invalid number, Plank must be positive number!');
+        return false;
+    } else {
+        setSuccess(plankVal);
+    }
+
+    var rightSidePlank = document.getElementById("rightSidePlank").value.trim();
+    var rightSidePlankVal = document.getElementById("rightSidePlank");
+    if (rightSidePlank === "") {
+        // alert("Email must be filled out");
+        // return false;
+        setError(rightSidePlankVal, 'Right Side Plank is required');
+        return false;
+    } else if (!validateRightSidePlank()) {
+        setError(rightSidePlankVal, 'Invalid number, Right Side Plank must be positive number!');
+        return false;
+    } else {
+        setSuccess(rightSidePlankVal);
+    }
+
+
+
+    var leftSidePlank = document.getElementById("leftSidePlank").value.trim();
+    var leftSidePlankVal = document.getElementById("leftSidePlank");
+    if (leftSidePlank === "") {
+        // alert("Email must be filled out");
+        // return false;
+        setError(leftSidePlankVal, 'Left Side Plank is required');
+        return false;
+    } else if (!validateLeftSidePlank()) {
+        setError(leftSidePlankVal, 'Invalid number, Left Side Plank must be positive number!');
+        return false;
+    } else {
+        setSuccess(leftSidePlankVal);
+    }
+
+
+    var rightSingleLegBridges = document.getElementById("rightSingleLegBridges").value.trim();
+    var rightSingleLegBridgesVal = document.getElementById("rightSingleLegBridges");
+    if (rightSingleLegBridges === "") {
+        // alert("Email must be filled out");
+        // return false;
+        setError(rightSingleLegBridgesVal, 'Right Single Leg Bridges is required');
+        return false;
+    } else if (!validateRightSingleLegBridges()) {
+        setError(rightSingleLegBridgesVal, 'Invalid number, Right Single Leg Bridges must be positive number!');
+        return false;
+    } else {
+        setSuccess(rightSingleLegBridgesVal);
+    }
+
+    var leftSingleLegBridges = document.getElementById("leftSingleLegBridges").value.trim();
+    var leftSingleLegBridgesVal = document.getElementById("leftSingleLegBridges");
+    if (leftSingleLegBridges === "") {
+        // alert("Email must be filled out");
+        // return false;
+        setError(leftSingleLegBridgesVal, 'Left Single Leg Bridges is required');
+        return false;
+    } else if (!validateLeftSingleLegBridges()) {
+        setError(leftSingleLegBridgesVal, 'Invalid number, Left Single Leg Bridges must be positive number!');
+        return false;
+    } else {
+        setSuccess(leftSingleLegBridgesVal);
+    }
+
+
+    var rightHopTest1 = document.getElementById("rightHopTest1").value.trim();
+    var rightHopTest1Val = document.getElementById("rightHopTest1");
+    if (rightHopTest1 === "") {
+        // alert("Email must be filled out");
+        // return false;
+        setError(rightHopTest1Val, 'Right Hop Test 1 is required');
+        return false;
+    } else if (!validateRightHopTest1()) {
+        setError(rightHopTest1Val, 'Invalid number, Right Hop Test 1 must be positive number!');
+        return false;
+    } else {
+        setSuccess(rightHopTest1Val);
+    }
+
+
+
+    var leftHopTest1 = document.getElementById("leftHopTest1").value.trim();
+    var leftHopTest1Val = document.getElementById("leftHopTest1");
+    if (leftHopTest1 === "") {
+        // alert("Email must be filled out");
+        // return false;
+        setError(leftHopTest1Val, 'Left Hop Test 1 is required');
+        return false;
+    } else if (!validateLeftHopTest1()) {
+        setError(leftHopTest1Val, 'Invalid number, Left Hop Test 1 must be positive number!');
+        return false;
+    } else {
+        setSuccess(leftHopTest1Val);
+    }
+
+    var rightHopTest2 = document.getElementById("rightHopTest2").value.trim();
+    var rightHopTest2Val = document.getElementById("rightHopTest2");
+    if (rightHopTest2 === "") {
+        // alert("Email must be filled out");
+        // return false;
+        setError(rightHopTest2Val, 'Right Hop Test 2 is required');
+        return false;
+    } else if (!validateRightHopTest2()) {
+        setError(rightHopTest2Val, 'Invalid number, Right Hop Test 2 must be positive number!');
+        return false;
+    } else {
+        setSuccess(rightHopTest2Val);
+    }
+
+    var leftHopTest2 = document.getElementById("leftHopTest2").value.trim();
+    var leftHopTest2Val = document.getElementById("leftHopTest2");
+    if (leftHopTest2 === "") {
+        // alert("Email must be filled out");
+        // return false;
+        setError(leftHopTest2Val, 'Left Hop Test 2 is required');
+        return false;
+    } else if (!validateLeftHopTest2()) {
+        setError(leftHopTest2Val, 'Invalid number, Left Hop Test 2 must be positive number!');
+        return false;
+    } else {
+        setSuccess(leftHopTest2Val);
+    }
+
+    var rightPasseReleveBalance = document.getElementById("rightPasseReleveBalance").value.trim();
+    var rightPasseReleveBalanceVal = document.getElementById("rightPasseReleveBalance");
+    if (rightPasseReleveBalance === "") {
+        // alert("Email must be filled out");
+        // return false;
+        setError(rightPasseReleveBalanceVal, 'Right Passe Releve Balance is required');
+        return false;
+    } else if (!validateRightPasseReleveBalance()) {
+        setError(rightPasseReleveBalanceVal, 'Invalid number, Right Passe Releve Balance must be positive number!');
+        return false;
+    } else {
+        setSuccess(rightPasseReleveBalanceVal);
+    }
+
+
+    var leftPasseReleveBalance = document.getElementById("leftPasseReleveBalance").value.trim();
+    var leftPasseReleveBalanceVal = document.getElementById("leftPasseReleveBalance");
+    if (leftPasseReleveBalance === "") {
+        // alert("Email must be filled out");
+        // return false;
+        setError(leftPasseReleveBalanceVal, 'Left Passe Releve Balance is required');
+        return false;
+    } else if (!validateLeftPasseReleveBalance()) {
+        setError(leftPasseReleveBalanceVal, 'Invalid number, Left Passe Releve Balance must be positive number!');
+        return false;
+    } else {
+        setSuccess(leftPasseReleveBalanceVal);
+    }
+
+    var rightPasseFlatFootBalance = document.getElementById("rightPasseFlatFootBalance").value.trim();
+    var rightPasseFlatFootBalanceVal = document.getElementById("rightPasseFlatFootBalance");
+    if (rightPasseFlatFootBalance === "") {
+        // alert("Email must be filled out");
+        // return false;
+        setError(rightPasseFlatFootBalanceVal, 'Right Passe Flat Foot Balance is required');
+        return false;
+    } else if (!validateRightPasseFlatFootBalance()) {
+        setError(rightPasseFlatFootBalanceVal, 'Right Passe Flat Foot Balance must be positive number!');
+        return false;
+    } else {
+        setSuccess(rightPasseFlatFootBalanceVal);
+    }
+
+
+    var leftPasseFlatFootBalance = document.getElementById("leftPasseFlatFootBalance").value.trim();
+    var leftPasseFlatFootBalanceVal = document.getElementById("leftPasseFlatFootBalance");
+    if (leftPasseFlatFootBalance === "") {
+        // alert("Email must be filled out");
+        // return false;
+        setError(leftPasseFlatFootBalanceVal, 'Left Passe Flat Foot Balance is required');
+        return false;
+    } else if (!validateLeftPasseFlatFootBalance()) {
+        setError(leftPasseFlatFootBalanceVal, 'Left Passe Flat Foot Balance must be positive number!');
+        return false;
+    } else {
+        setSuccess(leftPasseFlatFootBalanceVal);
+    }
+
+
+    var ckcuest = document.getElementById("ckcuest").value.trim();
+    var ckcuestVal = document.getElementById("ckcuest");
+    if (ckcuest === "") {
+        // alert("Email must be filled out");
+        // return false;
+        setError(ckcuestVal, 'CKCUEST is required');
+        return false;
+    } else if (!validateCkcuest()) {
+        setError(ckcuestVal, 'CKCUEST must be positive number!');
+        return false;
+    } else {
+        setSuccess(ckcuestVal);
+    }
+
+    var bolt = document.getElementById("bolt").value.trim();
+    var boltVal = document.getElementById("bolt");
+    if (bolt === "") {
+        // alert("Email must be filled out");
+        // return false;
+        setError(boltVal, 'BOLT is required');
+        return false;
+    } else if (!validateBolt()) {
+        setError(boltVal, 'BOLT must be positive number!');
+        return false;
+    } else {
+        setSuccess(boltVal);
+    }
+
+    submitMessage();
     pdfMake.createPdf(create_pdf()).print();
 
 }
+
+/*
+submitMessage is async function which grap values of all elements from the DRSform 
+and fetch it into AWS API gateway by POST method. 
+if POST succeed Return:
+                    statusCode: 201,
+                    body: '',
+                    headers: {
+                    'Access-Control-Allow-Origin' : '*'
+otherwise:                     
+                    statusCode: 400,
+                    body: 'Bad Request',
+                    headers: {
+                    'Access-Control-Allow-Origin' : '*'
+*/
+
+async function submitMessage() {
+    var admin = document.getElementById("testadministrator").value.toString();
+    if (admin.length === 0) {
+        admin = "not applicable";
+        console.log(admin);
+    }
+    var dateInput = document.getElementById("testingdate").value.toString();
+    var email = document.getElementById("email").value;
+    var firstName = document.getElementById("firstName").value;
+    var lastName = document.getElementById("lastName").value;
+    var ethnicity = document.getElementById("ethnicity").value;
+    var sex = document.getElementById("sex").value;
+    var company = document.getElementById("company").value;
+    var rightSingleLegReleves = document.getElementById("rightSingleLegReleves").value;
+    var leftSingleLegReleves = document.getElementById("leftSingleLegReleves").value;
+    var plank = document.getElementById("plank").value;
+    var rightSidePlank = document.getElementById("rightSidePlank").value;
+    var leftSidePlank = document.getElementById("leftSidePlank").value;
+    var rightSingleLegBridges = document.getElementById("rightSingleLegBridges").value;
+    var leftSingleLegBridges = document.getElementById("leftSingleLegBridges").value;
+    var rightHopTest1 = document.getElementById("rightHopTest1").value;
+    var leftHopTest1 = document.getElementById("leftHopTest1").value;
+    var rightHopTest2 = document.getElementById("rightHopTest2").value;
+    var leftHopTest2 = document.getElementById("leftHopTest2").value;
+    var rightPasseReleveBalance = document.getElementById("rightPasseReleveBalance").value;
+    var leftPasseReleveBalance = document.getElementById("leftPasseReleveBalance").value;
+    var rightPasseFlatFootBalance = document.getElementById("rightPasseFlatFootBalance").value;
+    var leftPasseFlatFootBalance = document.getElementById("leftPasseFlatFootBalance").value;
+    var ckcuest = document.getElementById("ckcuest").value;
+    var bolt = document.getElementById("bolt").value;
+    var workingLeg = document.getElementById("workingLeg").value;
+    var standingLeg = document.getElementById("standingLeg").value;
+    var threeMonthInjury = document.getElementById("threeMonthInjury").value;
+    var fiveYearInjury = document.getElementById("fiveYearInjury").value;
+    fetch('https://kuj8xxyl3g.execute-api.us-east-1.amazonaws.com/prod/drsform', {
+        method: 'POST',
+        body: JSON.stringify({
+            "admin": admin,
+            "dateInput": dateInput,
+            "email": email,
+            "firstName": firstName,
+            "lastName": lastName,
+            "ethnicity": ethnicity,
+            "sex": sex,
+            "company": company,
+            "rightSingleLegReleves": rightSingleLegReleves,
+            "leftSingleLegReleves": leftSingleLegReleves,
+            "plank": plank,
+            "rightSidePlank": rightSidePlank,
+            "leftSidePlank": leftSidePlank,
+            "rightSingleLegBridges": rightSingleLegBridges,
+            "leftSingleLegBridges": leftSingleLegBridges,
+            "rightHopTest1": rightHopTest1,
+            "leftHopTest1": leftHopTest1,
+            "rightHopTest2": rightHopTest2,
+            "leftHopTest2": leftHopTest2,
+            "rightPasseReleveBalance": rightPasseReleveBalance,
+            "leftPasseReleveBalance": leftPasseReleveBalance,
+            "rightPasseFlatFootBalance": rightPasseFlatFootBalance,
+            "leftPasseFlatFootBalance": leftPasseFlatFootBalance,
+            "ckcuest": ckcuest,
+            "bolt": bolt,
+            "workingLeg": workingLeg,
+            "standingLeg": standingLeg,
+            "threeMonthInjury": threeMonthInjury,
+            "fiveYearInjury": fiveYearInjury
+
+        })
+    })
+        .then(response => response.json())
+        .then((response) => {
+            console.log(response);
+            // Add new message to message list
+        });
+}
+
+
 
 
 function create_pdf() {
@@ -682,12 +864,15 @@ function create_pdf() {
                 image: 'getReady', width: 500, alignment: 'center'
             },
 
-            { text: '\\n\\nPatient Instructions\\n\\n', style: 'header', alignment: 'center' },
-            { text: 'Read all information on this document\\n\\n', alignment: 'center', bold: true },
-            { text: 'Ask your provider about any questions or concerns\\n\\n', alignment: 'center', bold: true },
-            { text: 'Pay special attention to all recommendations\\n\\n\\n\\n', alignment: 'center', bold: true },
+            { text: 'Patient Instructions', style: 'header', alignment: 'center' },
+            { text: '\n' },
+            //{ text: 'Patient Instructions', style: 'header', alignment: 'center' },
+            { text: 'Read all information on this document', alignment: 'center', bold: true },
+            { text: 'Ask your provider about any questions or concerns', alignment: 'center', bold: true },
+            { text: 'Pay special attention to all recommendations', alignment: 'center', bold: true },
 
-            { text: '\\n\\nRecommendations\\n\\n', style: 'header' },
+            { text: 'Recommendations', style: 'header' },
+            { text: '\n' },
             {
                 ul: [d.plankExtra.accommodations,
                 d.passeExtra.accommodations,
@@ -696,7 +881,8 @@ function create_pdf() {
 
             }
 
-            , { text: 'Test Results:\\n\\n', style: 'header', alignment: 'center' }
+            , { text: 'Test Results:', style: 'header', alignment: 'center' }
+            , { text: '\n' }
             , {
                 style: 'headerTable',
                 color: 'blue',
@@ -761,9 +947,12 @@ function create_pdf() {
                         image: 'logo2',
                         width: 100
                     },
+
+
                     {
                         width: 'auto',
-                        text: '\\nPrepared by Dr. Sheyi Ojofeitimi, PT, DPT, OCS, CFMT and Dr. Danelle Dickson, PT, DPT, OCS\\n\\nDance Ready Project: www.danceready.org', alignment: 'left', fontSize: 10, color: 'grey', link: 'www.danceready.org'
+                        text: ' \n Prepared by Dr. Sheyi Ojofeitimi, PT, DPT, OCS, CFMT and Dr. Danelle Dickson, PT, DPT, OCS Dance Ready Project: www.danceready.org', alignment: 'left', fontSize: 10, color: 'grey', link: 'www.danceready.org'
+
                     },
 
 
